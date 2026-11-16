@@ -1,0 +1,7 @@
+# Python dependencies for thermal controller project
+# Install: pip install -r requirements.txt
+
+pyserial>=3.5          # Serial communication with Arduino
+matplotlib>=3.5        # Plotting and visualization
+numpy>=1.21            # Numerical computation
+pandas>=1.4            # Data manipulation (optional, for advanced analysis)

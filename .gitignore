@@ -1,0 +1,52 @@
+# ==============================================================================
+# Git Ignore for Control System Project (MATLAB, Simulink, Arduino, Python)
+# ==============================================================================
+
+# Simulink simulation cache & internal build artifacts
+slprj/
+**/slprj/
+*.slxc
+tmwinternal/
+**/tmwinternal/
+simulink_cache.xml
+**/simulink_cache.xml
+
+# MATLAB auto-save and temporary files
+*.asv
+*.autosave
+*.m.bak
+*.mat.bak
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+env/
+venv/
+.venv/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# IDE & Editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# LaTeX auxiliary files (preserve source .tex, images, and final .pdf)
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk

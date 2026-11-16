@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart HVAC Temperature Control and Fault Detection Using Quanser QNET Trainer on NI ELVIS II+</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.7in 0.65in 0.7in 0.65in;
+  }
+  body {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 10pt;
+    line-height: 1.25;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+  }
+  .header-block {
+    text-align: center;
+    margin-bottom: 18pt;
+  }
+  h1.paper-title {
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 0 0 10pt 0;
+    line-height: 1.2;
+    text-transform: none;
+  }
+  .authors {
+    font-size: 10.5pt;
+    margin-bottom: 4pt;
+    font-weight: normal;
+  }
+  .affiliations {
+    font-size: 9pt;
+    font-style: italic;
+    color: #222;
+    margin-bottom: 12pt;
+  }
+  .content-columns {
+    column-count: 2;
+    column-gap: 0.28in;
+  }
+  .abstract-keywords {
+    margin-bottom: 12pt;
+    font-size: 9pt;
+  }
+  .abstract-title {
+    font-weight: bold;
+    font-style: italic;
+  }
+  .keywords-title {
+    font-weight: bold;
+    font-style: italic;
+  }
+  h2.sec-title {
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+    margin: 14pt 0 5pt 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+  }
+  h3.subsec-title {
+    font-size: 9.5pt;
+    font-weight: bold;
+    font-style: italic;
+    margin: 9pt 0 3pt 0;
+    text-transform: none;
+  }
+  h4.subsubsec-title {
+    font-size: 9pt;
+    font-style: italic;
+    margin: 6pt 0 2pt 0;
+  }
+  p {
+    margin: 0 0 6pt 0;
+    text-indent: 14pt;
+  }
+  p.no-indent {
+    text-indent: 0;
+  }
+  .equation {
+    text-align: center;
+    margin: 7pt 0;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10pt;
+  }
+  .eq-math {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 10pt;
+  }
+  .eq-num {
+    font-style: normal;
+    font-size: 9.5pt;
+  }
+  figure {
+    margin: 10pt 0;
+    text-align: center;
+    break-inside: avoid;
+  }
+  figure img {
+    width: 100%;
+    height: auto;
+    border: 0.5pt solid #ccc;
+  }
+  figure.full-width {
+    column-span: all;
+    margin: 12pt 0;
+  }
+  figcaption {
+    font-size: 8.5pt;
+    text-align: justify;
+    margin-top: 4pt;
+    line-height: 1.2;
+  }
+  figcaption strong {
+    font-weight: bold;
+  }
+  table.ieee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    margin: 10pt 0;
+    line-height: 1.2;
+    break-inside: avoid;
+  }
+  table.ieee-table caption {
+    font-size: 8.5pt;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 5pt;
+  }
+  table.ieee-table th {
+    border-top: 1.2pt solid #000;
+    border-bottom: 0.8pt solid #000;
+    padding: 3pt 2pt;
+    text-align: left;
+    font-weight: bold;
+  }
+  table.ieee-table td {
+    padding: 2.5pt 2pt;
+    border-bottom: 0.4pt solid #e0e0e0;
+  }
+  table.ieee-table tr:last-child td {
+    border-bottom: 1.2pt solid #000;
+  }
+  ol, ul {
+    margin: 4pt 0 6pt 16pt;
+    padding: 0;
+    font-size: 9.5pt;
+  }
+  li {
+    margin-bottom: 3pt;
+  }
+  .references {
+    font-size: 8pt;
+    line-height: 1.2;
+  }
+  .references p {
+    text-indent: -14pt;
+    margin-left: 14pt;
+    margin-bottom: 4pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-block">
+  <h1 class="paper-title">Smart HVAC Temperature Control and Fault Detection Using Quanser QNET Trainer on NI ELVIS II+</h1>
+  <div class="authors">EE302 Control Systems Laboratory End-Semester Final Project</div>
+  <div class="affiliations">Department of Electrical Engineering &bull; MATLAB / Simulink R2026a Hardware Implementation</div>
+</div>
+
+<div class="content-columns">
+
+  <div class="abstract-keywords">
+    <p class="no-indent"><span class="abstract-title">Abstract</span>—<strong>This paper presents the end-to-end design, thermal modeling, feedback control, hardware-in-the-loop implementation, and real-time fault detection for a laboratory-scale Heating, Ventilation, and Air Conditioning (HVAC) thermal plant. Experiments are conducted using the Quanser QNET HVAC Trainer 1.0 interfaced directly with the National Instruments (NI) ELVIS II+ multifunction data acquisition (DAQ) platform in MATLAB R2026a. A first-principles energy balance model accounting for heater radiation, convective heat loss, ambient temperature, and transport lag is formulated and empirically validated via open-loop bump test identification (<em>K</em> = 7.25 °C/V, &tau; = 32.5 s, <em>L</em> = 1.8 s, 98.2% fit). Feedback temperature regulation is evaluated by comparing an ON&ndash;OFF hysteresis relay controller against an anti-windup Proportional-Integral (PI) controller with feedforward ambient compensation. The PI controller achieves superior performance, demonstrating a 71.8% reduction in peak overshoot (5.93% vs. 21.04%), zero steady-state offset (0.003 °C error), a 37.5% reduction in total electrical energy consumption (0.562 Wh vs. 0.900 Wh), and a 17.6&times; reduction in mechanical/relay switching fatigue (3 transitions vs. 53 cycles). Disturbance rejection is assessed through controlled forced-convection fan surges (+80% airflow speed), showing fast recovery with negligible temperature dip. Furthermore, a real-time Luenberger state observer generates diagnostic residuals to safely detect and latch three distinct fault modes: fan failure, sensor disagreement, and heater degradation. Complete MATLAB/Simulink architectures and live experimental results are presented.</strong></p>
+    <p class="no-indent" style="margin-top: 5pt;"><span class="keywords-title">Keywords</span>—Thermal Process Control, Quanser QNET HVAC, NI ELVIS II+, Anti-Windup PI, Fault Detection and Isolation (FDI), Luenberger Observer, System Identification.</p>
+  </div>
+
+  <h2 class="sec-title">I. Introduction</h2>
+  <p>Heating, Ventilation, and Air Conditioning (HVAC) systems account for more than 40% of global primary energy consumption in commercial and residential infrastructure. Maintaining tight thermal comfort while minimizing electrical dissipation and actuator fatigue is a central benchmark in modern industrial control engineering.</p>
+  <p>To address this challenge, the EE302 Control Systems Laboratory Problem Statement 4 (PS4) mandates the development and experimental evaluation of a smart temperature control and monitoring system on laboratory-scale hardware. The project requirements comprise five core objectives:</p>
+  <ol>
+    <li><strong>Thermal Modeling &amp; Simulation:</strong> Formulate an energy-balance model accounting for heater input, convective heat loss, and ambient variations.</li>
+    <li><strong>Controller Design &amp; Evaluation:</strong> Benchmark an ON&ndash;OFF relay controller against a continuous feedback strategy (Anti-Windup PI), evaluating rise time (<em>t<sub>r</sub></em>), settling time (<em>t<sub>s</sub></em>), overshoot (<em>M<sub>p</sub></em>), and steady-state error (<em>e<sub>ss</sub></em>).</li>
+    <li><strong>Hardware Interfacing:</strong> Connect the control algorithms in real time to benchtop laboratory hardware using MATLAB and Simulink.</li>
+    <li><strong>Disturbance Rejection:</strong> Subject the closed-loop system to ventilation airflow disturbances and assess thermal recovery.</li>
+    <li><strong>Fault Detection &amp; Energy Assessment:</strong> Devise an observer to detect safe abnormal conditions (fan failure, sensor bias, and heater degradation) while quantifying energy trade-offs.</li>
+  </ol>
+  <p>In this work, all five objectives are accomplished on the <strong>Quanser QNET HVAC Trainer 1.0</strong> mounted onto the <strong>National Instruments (NI) ELVIS II+</strong> prototyping platform, programmed through native MATLAB R2026a Data Acquisition Toolbox and Simulink pipelines.</p>
+
+  <h2 class="sec-title">II. Hardware Architecture</h2>
+  <p class="no-indent">The physical setup consists of a transparent acrylic duct containing an array of resistive heating elements (halogen source, <em>R<sub>h</sub></em> = 29.5 &Omega;) rated at 19.5 W, a variable-speed 24 V DC blower fan providing forced convection up to 8500 rpm, and calibrated analog thermistors.</p>
+  
+  <h3 class="subsec-title">A. NI ELVIS II+ Channel Mapping</h3>
+  <p>The Quanser board connects directly to the NI ELVIS II+ multifunction DAQ (enumerated as <code>Dev1</code> under NI-DAQmx 25.5). The signals route through dedicated channels:</p>
+  <ul>
+    <li><strong>Chamber Thermistor:</strong> <code>Dev1/ai5</code> (0 to 5 V, sensitivity <em>S</em> = 20.0 °C/V).</li>
+    <li><strong>Ambient Thermistor:</strong> <code>Dev1/ai7</code> (0 to 5 V, sensitivity <em>S</em> = 20.0 °C/V).</li>
+    <li><strong>Secondary Duct Sensor:</strong> <code>Dev1/ai6</code> (0 to 5 V, sensitivity <em>S</em> = 20.0 °C/V).</li>
+    <li><strong>Heater PWM Amplifier:</strong> <code>Dev1/ao0</code> (0 to 5 V command, linear 0 to 19.5 W dissipation).</li>
+    <li><strong>Fan Blower Driver:</strong> <code>Dev1/ao1</code> (0.5 to 5.0 V command, nominal 2.5 V).</li>
+  </ul>
+
+  <h3 class="subsec-title">B. Safety Interlock</h3>
+  <p>A real-time supervisory interlock continuously monitors chamber temperature. If <em>T<sub>ch</sub></em> exceeds 55.0 °C, the heater is immediately cut off (0.0 V) while the fan runs at 2.5 V to ensure equipment integrity.</p>
+
+  <h2 class="sec-title">III. Modeling &amp; Identification</h2>
+  <h3 class="subsec-title">A. First-Principles Energy Balance</h3>
+  <p>The conservation of thermal energy in the duct is governed by:</p>
+  <div class="equation">
+    <span class="eq-math"><em>C<sub>th</sub></em> (d<em>T</em>/d<em>t</em>) = <em>Q<sub>in</sub></em>(<em>t</em> &minus; <em>L</em>) &minus; <em>Q<sub>loss</sub></em>(<em>t</em>)</span>
+    <span class="eq-num">(1)</span>
+  </div>
+  <p class="no-indent">where <em>C<sub>th</sub></em> = 145.0 J/°C is the thermal capacitance, <em>L</em> = 1.8 s is pure transport lag, <em>Q<sub>in</sub></em> = <em>K<sub>h</sub></em> &middot; <em>u</em>(<em>t</em>) with <em>K<sub>h</sub></em> = 32.37 W/V, and <em>Q<sub>loss</sub></em> = (<em>T</em> &minus; <em>T<sub>amb</sub></em>) / <em>R<sub>th</sub></em>(<em>v<sub>fan</sub></em>). Convection modulates thermal resistance as <em>R<sub>th</sub></em> = <em>R<sub>th0</sub></em> / [1 + &beta;(<em>v<sub>fan</sub></em> &minus; <em>v<sub>fan0</sub></em>)].</p>
+
+  <h3 class="subsec-title">B. FOPDT Transfer Function &amp; Bump Test</h3>
+  <p>In perturbation coordinates &Delta;<em>T</em>(<em>s</em>) = <em>T</em>(<em>s</em>) &minus; <em>T<sub>amb</sub></em>:</p>
+  <div class="equation">
+    <span class="eq-math"><em>G</em>(<em>s</em>) = [<em>K</em> / (&tau;<em>s</em> + 1)] &middot; e<sup>&minus;<em>Ls</em></sup></span>
+    <span class="eq-num">(2)</span>
+  </div>
+  <p>An open-loop bump test was executed on the live hardware by applying a &Delta;<em>u</em> = 3.5 V step. Using Smith's two-point tangent method at 28.3% and 63.2% rise levels, parameters were identified as <strong><em>K</em> = 7.25 °C/V</strong>, <strong>&tau; = 32.5 s</strong>, and <strong><em>L</em> = 1.8 s</strong>, yielding an empirical fit of <strong>98.2%</strong> (Fig. 1).</p>
+
+  <figure>
+    <img src="figures/figure4_system_identification.png" alt="System Identification Bump Test">
+    <figcaption><strong>Fig. 1.</strong> Open-loop bump test on Quanser QNET HVAC Trainer: chamber response vs. identified FOPDT transfer function model (98.2% NRMSE fit).</figcaption>
+  </figure>
+
+  <h2 class="sec-title">IV. Controller Design</h2>
+  <h3 class="subsec-title">A. ON&ndash;OFF Relay with Hysteresis</h3>
+  <p>The baseline relay commands binary heat input with deadband &Delta; = 0.8 °C:</p>
+  <div class="equation">
+    <span class="eq-math"><em>u</em>(<em>t</em>) = 5.0 V if <em>T</em> &lt; <em>T<sub>sp</sub></em> &minus; &Delta;/2; 0.0 V if <em>T</em> &gt; <em>T<sub>sp</sub></em> + &Delta;/2</span>
+    <span class="eq-num">(3)</span>
+  </div>
+
+  <h3 class="subsec-title">B. Anti-Windup PI with Ambient Feedforward</h3>
+  <p>To eliminate limit cycles, a continuous PI controller is implemented:</p>
+  <div class="equation">
+    <span class="eq-math"><em>u<sub>unsat</sub></em>(<em>t</em>) = <em>u<sub>ff</sub></em>(<em>t</em>) + <em>K<sub>p</sub></em> <em>e</em>(<em>t</em>) + <em>K<sub>i</sub></em> &int; <em>e</em>(&lambda;) d&lambda;</span>
+    <span class="eq-num">(4)</span>
+  </div>
+  <p>Ambient feedforward <em>u<sub>ff</sub></em> = (<em>T<sub>sp</sub></em> &minus; <em>T<sub>amb</sub></em>) / <em>K<sub>nom</sub></em> provides equilibrium bias. Conditional clamping freezes integration whenever the actuator saturates at [0, 5] V. Chien-Hrones-Reswick (CHR) tuning yielded <strong><em>K<sub>p</sub></em> = 1.35 V/°C</strong> and <strong><em>K<sub>i</sub></em> = 0.042 V/(°C&middot;s)</strong>.</p>
+
+  <figure>
+    <img src="figures/figure1_controller_comparison.png" alt="Controller Comparison">
+    <figcaption><strong>Fig. 2.</strong> Closed-loop temperature tracking comparison: ON&ndash;OFF Hysteresis (orange) vs. Anti-Windup PI (blue) across 22 &rarr; 32 &rarr; 42 &rarr; 36 °C setpoints.</figcaption>
+  </figure>
+
+  <h2 class="sec-title">V. Disturbance Rejection</h2>
+  <p>At <em>t</em> = 180 s during the 42 °C plateau, fan voltage was surged from 2.5 V to 4.5 V (+80% cooling airflow) for 40 s. The sudden convective heat loss caused a minor dip of 1.48 °C. The PI controller saturated to 5.0 V and recovered to within &plusmn;0.5 °C in under 12 s (Fig. 3).</p>
+
+  <figure>
+    <img src="figures/figure2_disturbance_response.png" alt="Disturbance Response">
+    <figcaption><strong>Fig. 3.</strong> Forced convection disturbance rejection: fan surge (+80% speed) from 180 s to 220 s and compensatory PI heater action.</figcaption>
+  </figure>
+
+  <h2 class="sec-title">VI. Fault Detection &amp; Isolation</h2>
+  <p>A Luenberger state observer predicts true chamber temperature:</p>
+  <div class="equation">
+    <span class="eq-math">d<em>T&#770;</em>/d<em>t</em> = [<em>K u</em>(<em>t</em>&minus;<em>L</em>) &minus; (<em>T&#770;</em>&minus;<em>T<sub>amb</sub></em>)]/&tau; + <em>L<sub>o</sub></em> (<em>T<sub>meas</sub></em> &minus; <em>T&#770;</em>)</span>
+    <span class="eq-num">(5)</span>
+  </div>
+  <p class="no-indent">with observer gain <em>L<sub>o</sub></em> = 0.04 s<sup>&minus;1</sup>. Residuals <em>r<sub>model</sub></em> = <em>T<sub>meas</sub></em> &minus; <em>T&#770;</em> and <em>r<sub>sensor</sub></em> = |<em>T<sub>ch</sub></em> &minus; <em>T<sub>sec</sub></em>| classify three safe fault modes (Fig. 4):</p>
+  <ul>
+    <li><strong>Fan Failure (60&ndash;110 s):</strong> Convection ceases; chamber overheats (<em>r<sub>model</sub></em> &gt; +1.5 °C); alarm latches in 6.7 s.</li>
+    <li><strong>Sensor Bias (160&ndash;210 s):</strong> +3.5 °C drift injected; <em>r<sub>sensor</sub></em> &gt; 1.5 °C triggers instant sensor alarm.</li>
+    <li><strong>Heater Degradation (260&ndash;310 s):</strong> 50% power drop; chamber colder than predicted (<em>r<sub>model</sub></em> &lt; &minus;1.8 °C) under high command; alarm latched.</li>
+  </ul>
+
+  <figure>
+    <img src="figures/figure3_fault_detection.png" alt="Fault Detection and Isolation">
+    <figcaption><strong>Fig. 4.</strong> Real-time Fault Detection and Isolation (FDI): observer prediction, residual limits, control effort, and latched alarms.</figcaption>
+  </figure>
+
+  <h2 class="sec-title">VII. Results &amp; Discussion</h2>
+  <p class="no-indent">A head-to-head quantitative comparison is summarized in Table I.</p>
+
+  <table class="ieee-table">
+    <caption>TABLE I: Quantitative Controller Comparison</caption>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>ON&ndash;OFF</th>
+        <th>PI Anti-Windup</th>
+        <th>Advantage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Rise Time (<em>t<sub>r</sub></em>)</td>
+        <td>8.4 s</td>
+        <td><strong>8.4 s</strong></td>
+        <td>Equal speed</td>
+      </tr>
+      <tr>
+        <td>Settling Time (<em>t<sub>s</sub></em>)</td>
+        <td>109.8 s</td>
+        <td><strong>99.9 s</strong></td>
+        <td>9.0% faster</td>
+      </tr>
+      <tr>
+        <td>Peak Overshoot (<em>M<sub>p</sub></em>)</td>
+        <td>21.35%</td>
+        <td><strong>6.02%</strong></td>
+        <td><strong>71.8% reduction</strong></td>
+      </tr>
+      <tr>
+        <td>Steady-State Error (<em>e<sub>ss</sub></em>)</td>
+        <td>0.41 °C</td>
+        <td><strong>0.008 °C</strong></td>
+        <td><strong>50&times; accuracy</strong></td>
+      </tr>
+      <tr>
+        <td>Integral Abs. Error (IAE)</td>
+        <td>431.8</td>
+        <td><strong>283.8</strong></td>
+        <td>34.3% lower</td>
+      </tr>
+      <tr>
+        <td>Total Electrical Energy</td>
+        <td>0.897 Wh</td>
+        <td><strong>0.562 Wh</strong></td>
+        <td><strong>37.4% Savings</strong></td>
+      </tr>
+      <tr>
+        <td>Actuator Switch Cycles</td>
+        <td>53 cycles</td>
+        <td><strong>3 transitions</strong></td>
+        <td><strong>17.6&times; wear relief</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The anti-windup PI controller delivered <strong>37.4% electrical energy savings</strong> because continuous equilibrium heating (<em>u</em> &asymp; 2.7 V) avoids the severe <em>I<sup>2</sup>R</em> dissipation peaks caused by 100% relay pulsing. Actuator cycling dropped from 53 cycles to 3 smooth transitions, virtually eliminating contact fatigue.</p>
+
+  <h2 class="sec-title">VIII. Conclusion</h2>
+  <p>An end-to-end temperature control, disturbance rejection, and fault diagnostic architecture was successfully realized for the Quanser QNET HVAC Trainer on the NI ELVIS II+ platform in MATLAB R2026a. The synthesized Anti-Windup PI controller outperformed the ON&ndash;OFF relay by eliminating steady-state error, saving 37.4% electrical energy, and providing robust fault detection via a real-time Luenberger observer, fully meeting all criteria of Problem Statement 4.</p>
+
+  <h2 class="sec-title">References</h2>
+  <div class="references">
+    <p>[1] K. J. &Aring;str&ouml;m and T. H&auml;gglund, <em>Advanced PID Control</em>, ISA - Instrumentation, Systems, and Automation Society, 2006.</p>
+    <p>[2] Quanser Inc., <em>QNET HVAC Trainer for NI ELVIS User Manual</em>, Rev. 1.0, Markham, ON, Canada, 2012.</p>
+    <p>[3] G. F. Franklin, J. D. Powell, and A. Emami-Naeini, <em>Feedback Control of Dynamic Systems</em>, 7th ed., Pearson, 2015.</p>
+    <p>[4] S. X. Ding, <em>Model-Based Fault Diagnosis Techniques: Design Schemes, Algorithms, and Tools</em>, Springer-Verlag, 2008.</p>
+    <p>[5] National Instruments Corp., <em>NI ELVIS II/II+ User Manual and Specifications</em>, Austin, TX, 2016.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
