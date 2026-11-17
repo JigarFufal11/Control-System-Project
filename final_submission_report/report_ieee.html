@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Comprehensive Design, Simulation, and Multi-Platform Experimental Validation of Smart HVAC Temperature Control and Fault Detection Systems</title>
+<!-- MathJax for rendering LaTeX equations -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  @page {
+    size: letter;
+    margin: 0.65in 0.6in 0.65in 0.6in;
+  }
+  body {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 9.5pt;
+    line-height: 1.25;
+    color: #000;
+    margin: 0;
+    padding: 20px;
+    background: #fff;
+    text-align: justify;
+  }
+  .paper-container {
+    max-width: 8.5in;
+    margin: 0 auto;
+  }
+  .header-block {
+    text-align: center;
+    margin-bottom: 16pt;
+  }
+  h1.paper-title {
+    font-size: 16.5pt;
+    font-weight: bold;
+    margin: 0 0 8pt 0;
+    line-height: 1.2;
+    text-transform: none;
+  }
+  .course-note {
+    font-size: 8.5pt;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 10pt;
+  }
+  .authors-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 8pt;
+  }
+  .author-card {
+    text-align: center;
+    font-size: 9pt;
+    width: 23%;
+    min-width: 140px;
+  }
+  .author-name {
+    font-weight: bold;
+    font-size: 9.5pt;
+  }
+  .author-roll {
+    font-style: italic;
+  }
+  .author-affil {
+    font-size: 8pt;
+    color: #333;
+  }
+  .dept-info {
+    text-align: center;
+    font-size: 8.5pt;
+    font-style: italic;
+    color: #222;
+    margin-top: 6pt;
+    margin-bottom: 14pt;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8pt;
+  }
+  
+  .content-columns {
+    column-count: 2;
+    column-gap: 0.28in;
+  }
+  
+  .abstract-box {
+    margin-bottom: 10pt;
+    font-size: 8.5pt;
+  }
+  .abstract-title {
+    font-weight: bold;
+    font-style: italic;
+  }
+  .keywords {
+    margin-top: 5pt;
+    font-size: 8.5pt;
+  }
+  .keywords-title {
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  h2.section-title {
+    font-size: 10pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 12pt 0 4pt 0;
+    letter-spacing: 0.5px;
+  }
+  h3.subsection-title {
+    font-size: 9.5pt;
+    font-weight: bold;
+    font-style: italic;
+    margin: 8pt 0 3pt 0;
+  }
+  p {
+    margin: 0 0 5pt 0;
+    text-indent: 1.2em;
+  }
+  p.no-indent {
+    text-indent: 0;
+  }
+  
+  .figure-box {
+    margin: 10pt 0;
+    text-align: center;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .figure-box img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+  }
+  .figure-caption {
+    font-size: 8pt;
+    line-height: 1.2;
+    margin-top: 4pt;
+    text-align: justify;
+  }
+  .figure-caption b {
+    font-family: sans-serif;
+    font-size: 7.5pt;
+  }
+  
+  .table-box {
+    margin: 10pt 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    text-align: center;
+  }
+  .table-title {
+    font-size: 8pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 4pt;
+    letter-spacing: 0.5px;
+  }
+  table.ieee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.5pt;
+    margin: 0 auto;
+  }
+  table.ieee-table th {
+    border-top: 1.2pt solid #000;
+    border-bottom: 0.8pt solid #000;
+    padding: 3pt 2pt;
+    font-weight: bold;
+    text-align: center;
+  }
+  table.ieee-table td {
+    padding: 2.5pt 2pt;
+    border-bottom: 0.4pt solid #ddd;
+    text-align: center;
+  }
+  table.ieee-table tr.section-row td {
+    background: #f8f8f8;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 0.6pt solid #aaa;
+    padding-left: 4pt;
+  }
+  table.ieee-table tr:last-child td {
+    border-bottom: 1.2pt solid #000;
+  }
+
+  .wide-block {
+    column-span: all;
+    margin: 12pt 0;
+  }
+  
+  .references-list {
+    font-size: 7.5pt;
+    line-height: 1.2;
+    padding-left: 14pt;
+    margin-top: 4pt;
+  }
+  .references-list li {
+    margin-bottom: 3pt;
+    text-align: justify;
+  }
+</style>
+</head>
+<body>
+
+<div class="paper-container">
+
+  <!-- Header & Authors -->
+  <div class="header-block">
+    <h1 class="paper-title">Comprehensive Design, Simulation, and Multi-Platform Experimental Validation of Smart HVAC Temperature Control and Fault Detection Systems</h1>
+    <div class="course-note">
+      <b>EE302: Control Systems Laboratory Final Project (Problem Statement 4, Group 7)</b><br>
+      Course Instructor: Dr. A. P. Tiwari &nbsp;|&nbsp; Lab Instructor: Dr. Y. V. Karteek
+    </div>
+    
+    <div class="authors-grid">
+      <div class="author-card">
+        <div class="author-name">Rathod Dhruv Shailesh</div>
+        <div class="author-roll">Roll No: B24242</div>
+        <div class="author-affil">SCEE, IIT Mandi</div>
+      </div>
+      <div class="author-card">
+        <div class="author-name">Dumpa Mohan Sai</div>
+        <div class="author-roll">Roll No: B24243</div>
+        <div class="author-affil">SCEE, IIT Mandi</div>
+      </div>
+      <div class="author-card">
+        <div class="author-name">Fufal Jigar Dineshbhai</div>
+        <div class="author-roll">Roll No: B24244</div>
+        <div class="author-affil">SCEE, IIT Mandi</div>
+      </div>
+      <div class="author-card">
+        <div class="author-name">Geetanjali Saraswat</div>
+        <div class="author-roll">Roll No: B24245</div>
+        <div class="author-affil">SCEE, IIT Mandi</div>
+      </div>
+    </div>
+    
+    <div class="dept-info">
+      School of Computing and Electrical Engineering (SCEE), Indian Institute of Technology Mandi, Himachal Pradesh 175005, India
+    </div>
+  </div>
+
+  <!-- Two-Column Layout -->
+  <div class="content-columns">
+
+    <!-- Abstract & Keywords -->
+    <div class="abstract-box">
+      <span class="abstract-title">Abstract—</span>Heating, Ventilation, and Air Conditioning (HVAC) systems are ubiquitous in modern residential, commercial, and industrial facilities, accounting for over 40% of global building energy consumption. Developing controllers that ensure accurate setpoint tracking, minimize mechanical actuator wear, conserve electrical energy, and provide real-time Fault Detection and Isolation (FDI) represents a critical challenge in applied control engineering. In this work, an exhaustive, three-pillar control systems engineering methodology is implemented and validated: (1) a first-principles continuous-time physical simulation model in MATLAB/Simulink; (2) an industrial-grade hardware-in-the-loop (HIL) benchmark on the Quanser QNET HVAC Trainer 1.0 interfaced with a National Instruments (NI) ELVIS II+ multifunction DAQ workstation; and (3) an embedded physical prototype featuring a custom 3D-printed cylindrical thermal chamber, active-LOW opto-isolated relay drivers, and an Arduino Mega 2560 microcontroller. First-Order Plus Dead Time (FOPTD) models are synthesized and empirically identified via bump tests across all platforms, yielding model fit accuracies exceeding 98% NRMSE. Comparative evaluations demonstrate that while bang-bang ON–OFF hysteresis control exhibits rapid initial rise times, it suffers from severe steady-state limit cycling, relay contact chatter, and excessive energy consumption. In contrast, Anti-Windup Proportional-Integral (PI) control synthesized via Internal Model Control (IMC) and in-situ Ziegler–Nichols relay auto-tuning eliminates steady-state error (|e<sub>ss</sub>| &lt; 0.1°C), prevents reset windup, and achieves a 10.6% to 37.5% reduction in total electrical energy. Furthermore, dual diagnostic schemes—a continuous Luenberger state observer tracking chamber temperature residuals and a four-code deterministic finite-state machine—successfully detect and isolate sensor disagreements, duct blockages, heater open-circuits, and physical insulation detachment. All hardware schematics, Simulink block diagrams, frequency-domain stability analyses, and experimental response curves are thoroughly documented.
+      
+      <div class="keywords">
+        <span class="keywords-title">Keywords—</span>Thermal Process Control, HVAC, Simulink, Quanser QNET, NI ELVIS II+, Arduino Mega 2560, Anti-Windup PI, Fault Detection and Isolation (FDI), Luenberger Observer, System Identification, Ziegler–Nichols Tuning.
+      </div>
+    </div>
+
+    <!-- Section I -->
+    <h2 class="section-title">I. Introduction</h2>
+    <p>Temperature regulation in enclosed thermal environments represents a classic yet demanding control engineering challenge characterized by non-linear heat transfer, long transport lags, convective ambient losses, and physical actuator saturation. In typical commercial installations, conventional ON–OFF thermostats are widely deployed owing to design simplicity and low upfront expense. However, two-position bang-bang switching inevitably excites limit cycle oscillations around the commanded setpoint, subjects resistive heating elements to severe thermal shock, and accelerates mechanical contact erosion on electromagnetic relays.</p>
+    
+    <p>To address these fundamental issues under the requirements of the EE302 Control Systems Laboratory Problem Statement 4 (PS4), this project presents the end-to-end mathematical synthesis, continuous-time simulation, industrial benchtop deployment, and custom hardware validation of smart HVAC control and fault detection systems. The investigation is organized into three unified pillars:</p>
+    <p><b>1. Pillar 1 (Pure Simulation):</b> First-principles lumped-parameter physical modeling and Simulink block diagram synthesis (<code>thermal_control.slx</code>) evaluating multi-step tracking (30°C → 40°C → 35°C) and disturbance recovery.</p>
+    <p><b>2. Pillar 2 (Industrial Benchmark):</b> Hardware-in-the-loop implementation on the Quanser QNET HVAC Trainer mounted on the National Instruments (NI) ELVIS II+ DAQ platform, augmented by a real-time Luenberger state observer for residual-based fault detection.</p>
+    <p><b>3. Pillar 3 (Custom Embedded Hardware):</b> CAD design, 3D printing, and Arduino Mega 2560 closed-loop interfacing of a custom insulated thermal chamber with nichrome heating, DC forced-air cooling, and a removable curved insulation hatch for physical disturbance injection.</p>
+
+    <!-- Section II -->
+    <h2 class="section-title">II. Mathematical Modeling & Plant Physics</h2>
+    <h3 class="subsection-title">A. First-Principles Energy Balance</h3>
+    <p>The thermal dynamics of an insulated chamber enclosing internal air volume \(V\), heated by input electrical power \(P\) and losing heat to an ambient environment at temperature \(T_\text{amb}\), is formulated as:</p>
+    <p class="no-indent" style="text-align: center;">
+      \[C_\text{th} \frac{dT(t)}{dt} = P \cdot u(t - L) - \frac{T(t) - T_\text{amb}}{R_\text{th}}\]
+    </p>
+    <p>where \(C_\text{th} = m c_p\) is the lumped thermal capacitance [J/°C], \(R_\text{th} = 1/(h A)\) is the convective/conductive thermal resistance to ambient [°C/W], \(P\) is the rated heater power [W], \(u(t) \in [0, 1]\) is the normalized duty cycle, and \(L\) is the lumped transport and probe dead time [s].</p>
+
+    <h3 class="subsection-title">B. FOPTD Transfer Function</h3>
+    <p>Defining temperature rise \(\Delta T(t) = T(t) - T_\text{amb}\) and duty perturbation \(\Delta u(t)\), the Laplace transformation yields the standard First-Order Plus Dead Time (FOPTD) continuous plant:</p>
+    <p class="no-indent" style="text-align: center;">
+      \[G(s) = \frac{\Delta T(s)}{\Delta U(s)} = \frac{K e^{-Ls}}{\tau s + 1}\]
+    </p>
+    <p>with steady-state DC gain \(K = P \cdot R_\text{th}\) [°C/unit duty] and dominant thermal time constant \(\tau = R_\text{th} \cdot C_\text{th}\) [s].</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_qnet_sysid.png" alt="System Identification">
+      <div class="figure-caption"><b>Fig. 1.</b> Quanser QNET HVAC open-loop bump test response ($K = 7.25\,^\circ\text{C/V}$, $\tau = 32.5\text{ s}$, $L = 1.8\text{ s}$) demonstrating 98.2% NRMSE fit.</div>
+    </div>
+
+    <!-- Section III -->
+    <h2 class="section-title">III. Pillar 1: Software Simulation</h2>
+    <h3 class="subsection-title">A. Simulink Architecture</h3>
+    <p>The primary simulation pipeline is encapsulated in <code>simulink/thermal_control.slx</code> (Fig. 2). The system incorporates a multi-step setpoint scheduler (30°C → 40°C → 35°C), selectable controller sub-blocks (Hysteresis Bang-Bang vs. Anti-Windup PI), strict actuator clamping bounds \([0.0, 1.0]\), the continuous thermal plant ODE, and a timed thermal resistance step disturbance (\(+30\% R_\text{th}\) at \(t = 900\text{ s}\)).</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_simulink_model.png" alt="Simulink Model">
+      <div class="figure-caption"><b>Fig. 2.</b> Pillar 1: Complete Simulink simulation block diagram (<code>thermal_control.slx</code>) displaying reference profile, selectable controllers, actuator saturation, plant dynamics, and disturbance injection.</div>
+    </div>
+
+    <h3 class="subsection-title">B. Simscape Electrical Driver Simulation</h3>
+    <p>To inspect driver stage behavior, a Simscape Electrical model (Fig. 3) was synthesized in <code>extra_files/testing/heater_driver_test.slx</code>. It evaluates gate charging transients, opto-isolator rise times, and power dissipation when driving a 12V/50W resistive load from a 5V microcontroller logic signal.</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_simscape_circuit.png" alt="Simscape Circuit">
+      <div class="figure-caption"><b>Fig. 3.</b> Simscape Electrical BJT-MOSFET driver circuit simulation verifying gate switching dynamics, logic isolation, and load current waveforms.</div>
+    </div>
+
+    <h3 class="subsection-title">C. Controller Synthesis</h3>
+    <p>The ON–OFF controller switches with a \(\pm 0.5^\circ\text{C}\) deadband. For the continuous PI controller, Internal Model Control (IMC) rules are evaluated for a desired closed-loop response time \(\tau_c = 12.0\text{ s}\):</p>
+    <p class="no-indent" style="text-align: center;">
+      \[K_p = \frac{\tau}{K(\tau_c + L)} = 0.5333, \quad K_i = \frac{K_p}{\tau} = 0.00444\text{ s}^{-1}\]
+    </p>
+    <p>Anti-windup clamping halts numerical integration whenever the actuator commands saturate and the control error acts to push the integrator deeper into saturation.</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_sim_onoff_vs_pi.png" alt="Simulink Comparison">
+      <div class="figure-caption"><b>Fig. 4.</b> Pillar 1 Simulation: Comparative transient tracking of ON–OFF relay vs Anti-Windup PI across the 30°C → 40°C → 35°C sequence.</div>
+    </div>
+
+    <div class="figure-box">
+      <img src="figures/fig_sim_disturbance.png" alt="Simulink Disturbance">
+      <div class="figure-caption"><b>Fig. 5.</b> Pillar 1 Simulation: PI disturbance rejection under a +30% thermal resistance shift ($R_\text{th} \to 0.39^\circ\text{C/W}$) at $t = 900\text{ s}$.</div>
+    </div>
+
+    <!-- Section IV -->
+    <h2 class="section-title">IV. Pillar 2: Quanser QNET HVAC NI ELVIS II+ Suite</h2>
+    <h3 class="subsection-title">A. Industrial Testbench & DAQ Setup</h3>
+    <p>The Quanser QNET HVAC Trainer 1.0 (QNET-012) is mounted directly on an NI ELVIS II+ prototyping workstation. Real-time interfacing is executed in MATLAB R2026a via the NI-DAQmx subsystem enumerated as <code>Dev1</code>: thermistor sensor signals are acquired on <code>Dev1/ai5</code>, <code>ai6</code>, and <code>ai7</code>, while heater and blower voltages are driven on <code>Dev1/ao0</code> and <code>ao1</code>.</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_qnet_model.png" alt="QNET Simulink Model">
+      <div class="figure-caption"><b>Fig. 6.</b> Pillar 2: Quanser QNET HVAC closed-loop Simulink architecture with real-time DAQ interfaces, anti-windup PI, and Luenberger observer FDI logic.</div>
+    </div>
+
+    <h3 class="subsection-title">B. Luenberger State Observer Fault Detection</h3>
+    <p>To detect system anomalies in real time without invasive hardware instrumentation, a continuous Luenberger state observer tracks chamber dynamics:</p>
+    <p class="no-indent" style="text-align: center;">
+      \[\dot{\hat{T}} = -\frac{1}{\tau} \hat{T} + \frac{K}{\tau} u(t - L) + L_\text{obs} (T_\text{meas} - \hat{T})\]
+    </p>
+    <p>The residual \(r(t) = T_\text{meas}(t) - \hat{T}(t)\) drives the fault isolation engine: fan failure / duct blockage is flagged when \(|r(t)| > 3.0^\circ\text{C}\); sensor disagreement is triggered when \(|T_\text{ai5} - T_\text{ai6}| > 2.0^\circ\text{C}\); and an emergency thermal shutdown trips if \(T > 55.0^\circ\text{C}\).</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_qnet_comparison.png" alt="QNET Comparison">
+      <div class="figure-caption"><b>Fig. 7.</b> Pillar 2 Quanser QNET: Comparative experimental evaluation of ON–OFF relay vs Anti-Windup PI on benchtop hardware.</div>
+    </div>
+
+    <div class="figure-box">
+      <img src="figures/fig_qnet_disturbance.png" alt="QNET Disturbance">
+      <div class="figure-caption"><b>Fig. 8.</b> Pillar 2 Quanser QNET: Experimental disturbance rejection under forced-air ventilation blower surge (+80% fan speed).</div>
+    </div>
+
+    <div class="figure-box">
+      <img src="figures/fig_qnet_fault_fdi.png" alt="QNET Fault Detection">
+      <div class="figure-caption"><b>Fig. 9.</b> Pillar 2 Quanser QNET: Luenberger observer residual dynamics and fault latching during simulated airflow loss.</div>
+    </div>
+
+    <!-- Section V -->
+    <h2 class="section-title">V. Pillar 3: Custom 3D-Printed Hardware</h2>
+    <h3 class="subsection-title">A. Physical Prototype & Circuit Design</h3>
+    <p>A custom laboratory thermal chamber was CAD-designed and 3D-printed in high-temperature polymer (Fig. 11). The chamber houses a 14.0W nichrome heating coil (8.0V, 1.75A), a 0.51W axial DC cooling blower (3.0V, 0.17A), an LM35 precision temperature sensor (10 mV/°C), and a removable curved insulation hatch for physical disturbance injection.</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_hardware_circuit.png" alt="Hardware Circuit Schematic">
+      <div class="figure-caption"><b>Fig. 10.</b> Pillar 3 Custom Hardware: Complete electrical circuit schematic detailing Arduino Mega 2560, active-LOW opto-relays, 14.0W heater, 0.51W fan, and LM35 analog temperature sensor.</div>
+    </div>
+
+    <div class="figure-box">
+      <img src="figures/fig_hardware_bench.jpeg" alt="Hardware Setup">
+      <div class="figure-caption"><b>Fig. 11.</b> Pillar 3 Custom Hardware: Workbench setup showing 3D-printed chamber, Arduino Mega, dual-channel relay board, and DC power supply.</div>
+    </div>
+
+    <h3 class="subsection-title">B. In-Situ Ziegler–Nichols Auto-Tuning</h3>
+    <p>To synthesize controller gains directly on physical hardware, an Åström–Hägglund relay feedback oscillation experiment was conducted at 35.0°C (Fig. 12). Limit cycle parameters \(d = 1.0\), \(a = 1.30^\circ\text{C}\), and \(P_u = 53.50\text{ s}\) yielded an ultimate gain \(K_u = 4d/(\pi a) = 0.9817\). Applying Ziegler–Nichols PI rules produced \(K_p = 0.4418\) and \(K_i = 0.00991\text{ s}^{-1}\).</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_hw_zn_tune.jpg" alt="ZN Auto-Tuning">
+      <div class="figure-caption"><b>Fig. 12.</b> Pillar 3 Custom Hardware: In-situ Åström–Hägglund relay feedback auto-tuning generating sustained limit cycles at 35.0°C ($P_u = 53.50\text{ s}$).</div>
+    </div>
+
+    <h3 class="subsection-title">C. Relay Dwell Time & Contact Protection</h3>
+    <p>To protect electromagnetic relay contacts from rapid switching wear, a minimum contact dwell time \(t_\text{dwell} = 2.0\text{ s}\) and an actuator deadband \(u_\text{deadband} = 0.05\) were embedded in the Arduino C++ execution loop, suppressing contact chattering while preserving tight thermal control.</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_hw_onoff_25.png" alt="Hardware On-Off 25C">
+      <div class="figure-caption"><b>Fig. 13.</b> Pillar 3 Custom Hardware: Discrete ON–OFF regulation at 25.0°C showing severe 4.3°C limit cycles.</div>
+    </div>
+
+    <div class="figure-box">
+      <img src="figures/fig_hw_pi_30.jpg" alt="Hardware PI 30C">
+      <div class="figure-caption"><b>Fig. 14.</b> Pillar 3 Custom Hardware: Anti-Windup PI regulation at 30.0°C showing smooth tracking and zero steady-state error.</div>
+    </div>
+
+    <h3 class="subsection-title">D. Physical Disturbance & Thermal Saturation</h3>
+    <p>During active 25.0°C PI regulation, the curved insulation hatch was physically detached at \(t \approx 390\text{ s}\) (Fig. 15). The PI controller automatically adapted, increasing the heating duty from 50.9% to 71.2% to hold the chamber at 24.93°C. In open-loop 100% duty tests, the physical chamber exhibited an asymptotic saturation ceiling of 39.20°C (Fig. 16).</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_hw_fault_insulation.jpg" alt="Hatch Removal Disturbance">
+      <div class="figure-caption"><b>Fig. 15.</b> Pillar 3 Custom Hardware: Adaptive duty recovery during physical hatch detachment at $t \approx 390\text{ s}$ (duty ramps from 50.9% to 71.2%).</div>
+    </div>
+
+    <div class="figure-box">
+      <img src="figures/fig_hw_thermal_ceiling.png" alt="Thermal Ceiling">
+      <div class="figure-caption"><b>Fig. 16.</b> Pillar 3 Custom Hardware: Thermal ceiling identification at 100% continuous duty cycle ($T_\text{max} = 39.20^\circ\text{C}$).</div>
+    </div>
+
+    <!-- Section VI -->
+    <h2 class="section-title">VI. Frequency-Domain Stability Analysis</h2>
+    <p>Using open-loop step response telemetry from the custom hardware prototype, the plant transfer function was determined as:</p>
+    <p class="no-indent" style="text-align: center;">
+      \[G_A(s) = \frac{16.65}{138.96 s + 1} e^{-13.90 s}\]
+    </p>
+    <p>Frequency-domain analysis of the loop transfer function \(L(s) = C(s) G_A(s)\) was conducted in MATLAB (Fig. 17). The loop exhibits a gain crossover frequency \(\omega_c = 0.046\text{ rad/s}\), a phase crossover frequency \(\omega_g = 0.076\text{ rad/s}\), a <b>Gain Margin of 5.56 dB</b>, and a <b>Phase Margin of 30.62°</b>, proving closed-loop asymptotic stability.</p>
+
+    <div class="figure-box">
+      <img src="figures/fig_tf_bode.png" alt="Bode Plot">
+      <div class="figure-caption"><b>Fig. 17.</b> Frequency response Bode plot of the loop transfer function showing Gain Margin GM = 5.56 dB and Phase Margin PM = 30.62°.</div>
+    </div>
+
+    <div class="figure-box">
+      <img src="figures/fig_tf_rlocus.png" alt="Root Locus">
+      <div class="figure-caption"><b>Fig. 18.</b> Closed-loop Root Locus diagram for the custom hardware thermal loop showing dominant pole trajectories.</div>
+    </div>
+
+    <!-- Section VII -->
+    <h2 class="section-title">VII. Quantitative Performance Benchmarking</h2>
+    <p>A comprehensive cross-platform performance comparison across all three project pillars is presented in Table I.</p>
+
+    <div class="table-box">
+      <div class="table-title">TABLE I. Multi-Platform Performance Benchmark</div>
+      <table class="ieee-table">
+        <thead>
+          <tr>
+            <th>Pillar / Controller</th>
+            <th>SP [°C]</th>
+            <th>Rise \(t_r\) [s]</th>
+            <th>Settling \(t_s\) [s]</th>
+            <th>Overshoot</th>
+            <th>SSE [°C]</th>
+            <th>Energy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-row"><td colspan="7">Pillar 1: Software Simulation (simulink/)</td></tr>
+          <tr>
+            <td>ON–OFF Relay (±0.5°C)</td>
+            <td>30→40</td>
+            <td><b>25.0</b></td>
+            <td>410 (Cycle)</td>
+            <td>3.4%</td>
+            <td>-0.05</td>
+            <td>62.1 kJ</td>
+          </tr>
+          <tr>
+            <td>IMC Anti-Windup PI</td>
+            <td>30→40</td>
+            <td>264.0</td>
+            <td><b>595.0</b></td>
+            <td>6.0%</td>
+            <td><b>+0.07</b></td>
+            <td><b>55.5 kJ (-10.6%)</b></td>
+          </tr>
+          <tr>
+            <td>PI (+30% Disturbance)</td>
+            <td>40→35</td>
+            <td>264.0</td>
+            <td>472.9</td>
+            <td><b>0.0%</b></td>
+            <td>+0.09</td>
+            <td>62.9 kJ</td>
+          </tr>
+
+          <tr class="section-row"><td colspan="7">Pillar 2: Quanser QNET Benchmark (qnet_hvac_ni_elvis/)</td></tr>
+          <tr>
+            <td>ON–OFF Relay</td>
+            <td>32.0</td>
+            <td><b>14.2</b></td>
+            <td>118.5 (Cycle)</td>
+            <td>21.0%</td>
+            <td>-0.12</td>
+            <td>0.900 Wh</td>
+          </tr>
+          <tr>
+            <td>Anti-Windup PI + Feedfwd</td>
+            <td>32.0</td>
+            <td>31.8</td>
+            <td><b>76.4</b></td>
+            <td><b>5.9%</b></td>
+            <td><b>+0.003</b></td>
+            <td><b>0.562 Wh (-37.5%)</b></td>
+          </tr>
+
+          <tr class="section-row"><td colspan="7">Pillar 3: Custom 3D Hardware Prototype (custom_hardware/)</td></tr>
+          <tr>
+            <td>Discrete ON–OFF</td>
+            <td>25.0</td>
+            <td><b>18.4</b></td>
+            <td>Oscillating</td>
+            <td>14.8%</td>
+            <td>±0.45</td>
+            <td>7.12 kJ</td>
+          </tr>
+          <tr>
+            <td>Discrete PI (Tuned)</td>
+            <td>30.0</td>
+            <td>48.0</td>
+            <td><b>92.0</b></td>
+            <td><b>2.1%</b></td>
+            <td><b>+0.05</b></td>
+            <td><b>5.84 kJ (-18.0%)</b></td>
+          </tr>
+          <tr>
+            <td>PI (Hatch Detached)</td>
+            <td>25.0</td>
+            <td>—</td>
+            <td>Recov. in 65s</td>
+            <td>0.0%</td>
+            <td><b>-0.07</b></td>
+            <td>9.97 W adapt.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section VIII -->
+    <h2 class="section-title">VIII. Discussion & Key Findings</h2>
+    <p><b>1. Energy Conservation:</b> Anti-Windup PI achieved between 10.6% and 37.5% electrical energy savings over ON–OFF control across all experimental platforms by continuously modulating thermal input.</p>
+    <p><b>2. Actuator Fatigue Elimination:</b> ON–OFF switching caused 53 contact transitions during short benchmark runs on QNET and audible contact chatter on the custom relay board. PI control modulated commands smoothly, completely eliminating chattering.</p>
+    <p><b>3. Steady-State Accuracy:</b> Whereas ON–OFF control continuously cycled within its hysteresis bands, the PI integrator drove steady-state error below 0.07°C across all implementations.</p>
+    <p><b>4. FDI Efficacy:</b> The Luenberger observer and four-code state machine correctly detected and isolated duct blockages, sensor disconnections, and physical hatch detachments without false alarms.</p>
+
+    <!-- Section IX -->
+    <h2 class="section-title">IX. Conclusion</h2>
+    <p>This report presented the design, simulation, and laboratory validation of a smart HVAC temperature control and fault detection system for EE302 Problem Statement 4. The three-pillar methodology successfully bridged theoretical continuous-time modeling, industrial HIL testing on the Quanser QNET NI ELVIS II+ suite, and physical prototyping on an Arduino Mega 2560 setup. Anti-Windup PI control demonstrated clear superiority in energy savings, steady-state precision, and actuator preservation.</p>
+
+    <!-- Acknowledgment -->
+    <h2 class="section-title">Acknowledgment</h2>
+    <p>The authors express their sincere gratitude to Course Instructor Dr. A. P. Tiwari and Lab Instructor Dr. Y. V. Karteek for their invaluable technical guidance and support throughout the EE302 Control Systems Laboratory at IIT Mandi.</p>
+
+    <!-- References -->
+    <h2 class="section-title">References</h2>
+    <ol class="references-list">
+      <li>K. J. Åström and T. Hägglund, <i>Advanced PID Control</i>. Research Triangle Park, NC: ISA, 2006.</li>
+      <li>K. Ogata, <i>Modern Control Engineering</i>, 5th ed. Boston: Prentice Hall, 2010.</li>
+      <li>Quanser Inc., <i>QNET HVAC Trainer User Manual for NI ELVIS II</i>, Doc 640, Markham, Canada, 2012.</li>
+      <li>R. C. Dorf and R. H. Bishop, <i>Modern Control Systems</i>, 13th ed. Boston: Pearson, 2017.</li>
+      <li>P. M. Frank, "Fault diagnosis in dynamic systems using analytical redundancy," <i>Automatica</i>, vol. 26, no. 3, pp. 459–474, 1990.</li>
+      <li>R. Isermann, <i>Fault-Diagnosis Systems</i>. Berlin: Springer-Verlag, 2006.</li>
+      <li>S. Skogestad, "Simple analytic rules for model reduction and PID tuning," <i>J. Process Control</i>, vol. 13, no. 4, pp. 291–309, 2003.</li>
+    </ol>
+
+  </div><!-- content-columns -->
+
+</div><!-- paper-container -->
+
+</body>
+</html>

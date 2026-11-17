@@ -8,9 +8,10 @@
 
 > **Course:** EE302 Control Systems Laboratory — Problem Statement 4 (Group 7)  
 > **Institution:** School of Computing and Electrical Engineering, Indian Institute of Technology (IIT) Mandi  
-> **Course Instructor:** Dr. Yanumula Venkata Karteek  
-> **Authors:** Jigar Fufal (B24244), Rathod Dhruv Shailesh (B24242), Dumpa Mohan Sai (B24243), Geetanjali Saraswat (B24245)  
-> **Core Deliverables:** Software Simulation, Quanser QNET Industrial HIL Benchmark, Custom 3D-Printed Hardware Chamber Implementation.
+> **Course Instructor:** Dr. A. P. Tiwari  
+> **Lab Instructor:** Dr. Y. V. Karteek  
+> **Authors (Group 7):** Rathod Dhruv Shailesh (B24242), Dumpa Mohan Sai (B24243), Fufal Jigar Dineshbhai (B24244), Geetanjali Saraswat (B24245)  
+> **Core Deliverables:** Software Simulation, Quanser QNET Industrial HIL Benchmark, Custom 3D-Printed Hardware Chamber Implementation, Master IEEE Submission Report.
 
 ---
 
@@ -313,11 +314,12 @@ Control System Project/
 
 ## 📚 Comprehensive Documentation & Reports
 
+- **🏆 Master Final Submission Report (Compiled IEEE PDF):** [`final_submission_report/IEEE_Final_Report_Smart_HVAC.pdf`](final_submission_report/IEEE_Final_Report_Smart_HVAC.pdf)
+- **🏆 Master Final Submission Report (LaTeX IEEE Source):** [`final_submission_report/IEEE_Final_Report_Smart_HVAC.tex`](final_submission_report/IEEE_Final_Report_Smart_HVAC.tex)
+- **🏆 Master Final Submission Report (Interactive HTML Preview):** [`final_submission_report/report_ieee.html`](final_submission_report/report_ieee.html)
 - **Custom Hardware Engineering Report (PDF):** [`custom_hardware/ControlFinalProject.pdf`](custom_hardware/ControlFinalProject.pdf)
 - **Detailed Custom Chamber Technical Analysis:** [`custom_hardware/Smart_HVAC_System_Analysis_Report.md`](custom_hardware/Smart_HVAC_System_Analysis_Report.md)
 - **IEEE Technical Paper — Quanser QNET (PDF):** [`qnet_hvac_ni_elvis/report/IEEE_Report_Smart_HVAC_Control.pdf`](qnet_hvac_ni_elvis/report/IEEE_Report_Smart_HVAC_Control.pdf)
-- **IEEE Paper Source (LaTeX):** [`qnet_hvac_ni_elvis/report/IEEE_Report_Smart_HVAC_Control.tex`](qnet_hvac_ni_elvis/report/IEEE_Report_Smart_HVAC_Control.tex)
-- **IEEE Paper HTML Preview:** [`qnet_hvac_ni_elvis/report/report_ieee.html`](qnet_hvac_ni_elvis/report/report_ieee.html)
 - **Problem Statement (PS4):** [`extra_files/PS4.pdf`](extra_files/PS4.pdf)
 - **Archive Documentation:** [`extra_files/README.md`](extra_files/README.md)
 
@@ -327,14 +329,16 @@ Control System Project/
 
 - **Institution:** Indian Institute of Technology (IIT) Mandi
 - **School:** School of Computing and Electrical Engineering (SCEE)
-- **Course:** EE302 Control Systems Laboratory
+- **Course Code:** EE302
+- **Course Name:** Control Systems Laboratory
 - **Problem Statement:** PS4 (Group 7)
-- **Project Team:**
-  - **Fufal Jigar Dineshbhai** (Roll No: B24244) — `b24244@students.iitmandi.ac.in`
+- **Course Instructor:** Dr. A. P. Tiwari
+- **Lab Instructor:** Dr. Y. V. Karteek
+- **Project Team (Group 7):**
   - **Rathod Dhruv Shailesh** (Roll No: B24242)
   - **Dumpa Mohan Sai** (Roll No: B24243)
+  - **Fufal Jigar Dineshbhai** (Roll No: B24244) — `b24244@students.iitmandi.ac.in`
   - **Geetanjali Saraswat** (Roll No: B24245)
-- **Course Instructor:** Dr. Yanumula Venkata Karteek
 - **Semester:** Autumn / November 2026
 
 ---
