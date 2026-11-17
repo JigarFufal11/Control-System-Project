@@ -1,0 +1,17 @@
+Key,Value,Unit
+Controller,ON/OFF Centered,
+SP_C,30.00,C
+Tamb_C,19.40,C
+Hysteresis_C,1.00,C
+Duration_s,354.2,s
+RiseTime_s,119.00,s
+SettleTime_s,158.84,s
+Overshoot_pct,0.68,%
+PeakT_C,30.205,C
+SSMean_C,29.908,C
+SSError_C,-0.092,C
+SSStd_C,0.097,C
+SSP2P_C,0.587,C
+HeaterDuty_pct,86.53,%
+FanDuty_pct,0.00,%
+Idle_pct,13.47,%

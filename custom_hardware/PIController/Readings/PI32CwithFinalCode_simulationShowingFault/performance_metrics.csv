@@ -1,0 +1,2 @@
+timestamp,setpoint_C,initial_C,final_C,steady_state_C,rise_time_s,settling_time_s,overshoot_pct,peak_time_s,peak_temp_C,ss_error_C,max_abs_error_C,ambient_C,runtime_s,stop_reason,fault_events,lid_fault_s,heater_fault_s,fan_fault_s,sensor_fault_s,heater_duty_pct
+2026-11-17 13:00:52,32,21.505376344086,32.2563650345572,32.1332401946856,133,525,856.773179183414,175,121.915120740109,-0.133240194685634,89.9151207401088,21.505376344086,600,Safety cap (1 hour) reached.,9,10,75,0,24,94.6666666666667

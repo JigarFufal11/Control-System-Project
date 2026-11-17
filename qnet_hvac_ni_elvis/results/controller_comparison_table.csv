@@ -1,11 +1,11 @@
 Metric,ON_OFF_Control,PI_AntiWindup
-"Rise Time (t_r, 10-90%) [s]",8.4,8.3
-"Settling Time (t_s, 2%) [s]",110,99.1
-"Peak Overshoot (M_p) [%]",20.6527103973805,6.21348911311737
-"Steady-State Error (e_ss) [°C]",0.363386343646523,0.00255135037251656
-"Integral Absolute Error (IAE)",426.719921875,284.404681396484
-"Integral Time Abs Error (ITAE)",68278.6975915528,42968.6191552735
-"Total Energy Consumed [Joules]",3218.475,2024.00117200166
-"Total Energy Consumed [Watt-hours]",0.894020833333333,0.56222254777824
-"Average Duty Cycle [%]",45.8483754512635,45.9969472024233
+"Rise Time (t_r, 10-90%) [s]",8.4,8.4
+"Settling Time (t_s, 2%) [s]",110,100.4
+"Peak Overshoot (M_p) [%]",20.8699238270826,6.08142930767909
+"Steady-State Error (e_ss) [°C]",0.40400908009106,0.00483511615273179
+"Integral Absolute Error (IAE)",432.736309814453,284.30478515625
+"Integral Time Abs Error (ITAE)",69130.5799340821,43026.9685839844
+"Total Energy Consumed [Joules]",3212.625,2023.00409481269
+"Total Energy Consumed [Watt-hours]",0.892395833333333,0.561945581892413
+"Average Duty Cycle [%]",45.7650652596501,45.9954068832521
 "Actuator Switching Count",53,3

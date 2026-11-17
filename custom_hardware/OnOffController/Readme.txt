@@ -1,0 +1,1 @@
+Those two different files are for two temperatures which were exactly ran by us so readings are available, otherwise you can change values for your readings

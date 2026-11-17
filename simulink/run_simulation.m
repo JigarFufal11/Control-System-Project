@@ -101,61 +101,73 @@ fprintf('\n--- Generating Plots ---\n');
 addpath('../matlab');
 
 % ---- Plot 1: ON-OFF vs PI Temperature Comparison ----
-figure('Name', 'ON-OFF vs PI: Temperature', 'Position', [100 100 900 600]);
+fig1 = figure('Name', 'ON-OFF vs PI: Temperature', 'Position', [100 100 900 600], 'Color', 'w');
+if exist('theme', 'file')
+    theme(fig1, 'light');
+end
+set(fig1, 'Color', 'w');
 
-subplot(2,1,1);
-plot(t_onoff, r_onoff, 'k--', 'LineWidth', 1.5, 'DisplayName', 'Reference');
-hold on;
-plot(t_onoff, T_onoff, 'r-', 'LineWidth', 1.2, 'DisplayName', 'ON-OFF');
-plot(t_pi, T_pi, 'b-', 'LineWidth', 1.2, 'DisplayName', 'PI');
-xlabel('Time [s]');
-ylabel('Temperature [°C]');
-title('Temperature Response: ON-OFF vs PI');
-legend('Location', 'best');
-grid on;
+ax1 = subplot(2,1,1);
+set(ax1, 'Color', 'w');
+plot(ax1, t_onoff, r_onoff, 'k--', 'LineWidth', 1.5, 'DisplayName', 'Reference');
+hold(ax1, 'on');
+plot(ax1, t_onoff, T_onoff, 'r-', 'LineWidth', 1.2, 'DisplayName', 'ON-OFF');
+plot(ax1, t_pi, T_pi, 'b-', 'LineWidth', 1.2, 'DisplayName', 'PI');
+xlabel(ax1, 'Time [s]');
+ylabel(ax1, 'Temperature [°C]');
+title(ax1, 'Temperature Response: ON-OFF vs PI');
+legend(ax1, 'Location', 'best');
+grid(ax1, 'on');
 
-subplot(2,1,2);
-plot(t_onoff, u_onoff, 'r-', 'LineWidth', 1, 'DisplayName', 'ON-OFF');
-hold on;
-plot(t_pi, u_pi, 'b-', 'LineWidth', 1, 'DisplayName', 'PI');
-xlabel('Time [s]');
-ylabel('Duty Cycle');
-title('Control Signal: ON-OFF vs PI');
-legend('Location', 'best');
-grid on;
-ylim([-0.1, 1.1]);
+ax2 = subplot(2,1,2);
+set(ax2, 'Color', 'w');
+plot(ax2, t_onoff, u_onoff, 'r-', 'LineWidth', 1, 'DisplayName', 'ON-OFF');
+hold(ax2, 'on');
+plot(ax2, t_pi, u_pi, 'b-', 'LineWidth', 1, 'DisplayName', 'PI');
+xlabel(ax2, 'Time [s]');
+ylabel(ax2, 'Duty Cycle');
+title(ax2, 'Control Signal: ON-OFF vs PI');
+legend(ax2, 'Location', 'best');
+grid(ax2, 'on');
+ylim(ax2, [-0.1, 1.1]);
 
-saveas(gcf, 'plot_onoff_vs_pi.png');
+exportgraphics(fig1, 'plot_onoff_vs_pi.png', 'BackgroundColor', 'white', 'Resolution', 300);
 fprintf('  Saved: plot_onoff_vs_pi.png\n');
 
 % ---- Plot 2: PI with Disturbance ----
-figure('Name', 'PI with Disturbance', 'Position', [100 100 900 600]);
+fig2 = figure('Name', 'PI with Disturbance', 'Position', [100 100 900 600], 'Color', 'w');
+if exist('theme', 'file')
+    theme(fig2, 'light');
+end
+set(fig2, 'Color', 'w');
 
-subplot(2,1,1);
-plot(t_pi, r_pi, 'k--', 'LineWidth', 1.5, 'DisplayName', 'Reference');
-hold on;
-plot(t_pi, T_pi, 'b-', 'LineWidth', 1.2, 'DisplayName', 'PI (no disturbance)');
-plot(t_dist, T_dist, 'm-', 'LineWidth', 1.2, 'DisplayName', 'PI (with disturbance)');
-xline(disturbance_time, 'g--', 'LineWidth', 1.5, 'DisplayName', 'Disturbance onset');
-xlabel('Time [s]');
-ylabel('Temperature [°C]');
-title('PI Response with R_{th} Disturbance (+30%)');
-legend('Location', 'best');
-grid on;
+ax3 = subplot(2,1,1);
+set(ax3, 'Color', 'w');
+plot(ax3, t_pi, r_pi, 'k--', 'LineWidth', 1.5, 'DisplayName', 'Reference');
+hold(ax3, 'on');
+plot(ax3, t_pi, T_pi, 'b-', 'LineWidth', 1.2, 'DisplayName', 'PI (no disturbance)');
+plot(ax3, t_dist, T_dist, 'm-', 'LineWidth', 1.2, 'DisplayName', 'PI (with disturbance)');
+xline(ax3, disturbance_time, 'g--', 'LineWidth', 1.5, 'DisplayName', 'Disturbance onset');
+xlabel(ax3, 'Time [s]');
+ylabel(ax3, 'Temperature [°C]');
+title(ax3, 'PI Response with R_{th} Disturbance (+30%)');
+legend(ax3, 'Location', 'best');
+grid(ax3, 'on');
 
-subplot(2,1,2);
-plot(t_pi, u_pi, 'b-', 'LineWidth', 1, 'DisplayName', 'PI (no disturbance)');
-hold on;
-plot(t_dist, u_dist, 'm-', 'LineWidth', 1, 'DisplayName', 'PI (with disturbance)');
-xline(disturbance_time, 'g--', 'LineWidth', 1.5, 'DisplayName', 'Disturbance onset');
-xlabel('Time [s]');
-ylabel('Duty Cycle');
-title('Control Effort with Disturbance');
-legend('Location', 'best');
-grid on;
-ylim([-0.1, 1.1]);
+ax4 = subplot(2,1,2);
+set(ax4, 'Color', 'w');
+plot(ax4, t_pi, u_pi, 'b-', 'LineWidth', 1, 'DisplayName', 'PI (no disturbance)');
+hold(ax4, 'on');
+plot(ax4, t_dist, u_dist, 'm-', 'LineWidth', 1, 'DisplayName', 'PI (with disturbance)');
+xline(ax4, disturbance_time, 'g--', 'LineWidth', 1.5, 'DisplayName', 'Disturbance onset');
+xlabel(ax4, 'Time [s]');
+ylabel(ax4, 'Duty Cycle');
+title(ax4, 'Control Effort with Disturbance');
+legend(ax4, 'Location', 'best');
+grid(ax4, 'on');
+ylim(ax4, [-0.1, 1.1]);
 
-saveas(gcf, 'plot_pi_disturbance.png');
+exportgraphics(fig2, 'plot_pi_disturbance.png', 'BackgroundColor', 'white', 'Resolution', 300);
 fprintf('  Saved: plot_pi_disturbance.png\n');
 
 %% ---- Compute Metrics (if compute_metrics exists) ----------------------

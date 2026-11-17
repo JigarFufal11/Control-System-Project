@@ -1,0 +1,2 @@
+timestamp,setpoint_C,initial_C,final_C,steady_state_C,rise_time_s,settling_time_s,overshoot_pct,peak_time_s,peak_temp_C,ss_error_C,max_abs_error_C,ambient_C,runtime_s,stop_reason
+2026-11-15 14:44:52,30,17.9374389051808,29.8541233760896,29.8176201587241,115,567,6.91267104906372,230,30.8338451685772,0.182379841275864,12.0332355816227,17.9374389051808,1166,Success: Settled within ±0.6°C for 600s

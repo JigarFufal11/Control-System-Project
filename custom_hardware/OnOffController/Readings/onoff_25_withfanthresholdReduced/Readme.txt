@@ -1,0 +1,1 @@
+Reduced FAN threshold so that fan also turns on.
