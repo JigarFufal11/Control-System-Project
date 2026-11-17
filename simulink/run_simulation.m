@@ -97,8 +97,8 @@ save('results_disturbance.mat', 't_dist', 'T_dist', 'u_dist', 'r_dist');
 %  ========================================================================
 fprintf('\n--- Generating Plots ---\n');
 
-% Add metrics path
-addpath('../matlab');
+% Add script directory to path
+addpath(fileparts(mfilename('fullpath')));
 
 % ---- Plot 1: ON-OFF vs PI Temperature Comparison ----
 fig1 = figure('Name', 'ON-OFF vs PI: Temperature', 'Position', [100 100 900 600], 'Color', 'w');
@@ -186,7 +186,7 @@ if exist('compute_metrics', 'file')
     save('metrics_all.mat', 'metrics_onoff', 'metrics_pi', 'metrics_dist');
 else
     fprintf('\n  compute_metrics.m not found. Skipping metrics.\n');
-    fprintf('  Add ../matlab to path and retry.\n');
+    fprintf('  Ensure compute_metrics.m is in the simulink directory.\n');
 end
 
 fprintf('\n=== All simulations complete ===\n');
